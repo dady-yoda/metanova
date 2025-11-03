@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "typecheck": "tsc --noEmit",
+    "build": "vite build && tsc --emitDeclarationOnly",
+    "postinstall": "test -f ./node_modules/.bin/tsc && chmod +x ./node_modules/.bin/tsc || true",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
