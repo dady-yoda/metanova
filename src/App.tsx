@@ -12,21 +12,25 @@ function App() {
         if (SF && typeof SF.setup === 'function') {
           SF.setup({
             numStars: 400,
-            baseSpeed: 0.3,
+            baseSpeed: 0.5,
             trailLength: 0.6,
             starColor: 'rgb(180, 180, 255)',
-            canvasColor: 'rgba(0, 0, 0, 0.18)'
+            canvasColor: 'rgba(0, 0, 0, 0.1)'
           });
         }
       };
       document.head.appendChild(s);
 
       return () => {
-        // try to cancel animation and remove canvas when App unmounts
+        // Cleanup starfield when App unmounts
         try {
           const SF = (window as any).Starfield;
-          if (SF && SF.frameId) cancelAnimationFrame(SF.frameId);
-        } catch (e) {}
+          if (SF && typeof SF.cleanup === 'function') {
+            SF.cleanup();
+          }
+        } catch (e) {
+          console.warn('Error cleaning up Starfield:', e);
+        }
       };
   }, []);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -58,11 +62,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    interface CircleElement extends HTMLElement {
-      x: number;
-      y: number;
-    }
-    
     const coords = { x: 0, y: 0 };
     const circles = Array.from(document.querySelectorAll<HTMLElement>(".circle"));
     const positions = new Map<HTMLElement, { x: number; y: number }>();

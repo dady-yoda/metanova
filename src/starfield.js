@@ -2,16 +2,16 @@
 class Starfield {
   static config = {
     numStars: 250,
-    baseSpeed: 1,
-    trailLength: 0.8,
-    starColor: 'rgb(230, 230, 230)',
-    canvasColor: 'rgb(0, 0, 0, 0)',
+    baseSpeed: 0.5,
+    trailLength: 0.6,
+    starColor: 'rgb(180, 180, 255)',
+    canvasColor: 'rgba(0, 0, 0, 0.1)',
     hueJitter: 0,
     maxAcceleration: 10,
     accelerationRate: 0.2,
     decelerationRate: 0.2,
     minSpawnRadius: 80,
-    maxSpawnRadius: 500,
+    maxSpawnRadius: 2000,
     auto: true,
     originX: null,
     originY: null,
@@ -23,17 +23,9 @@ class Starfield {
   static originElement = null;
   static containerElement = null;
   static accelerate = false;
-  static currentSpeed = 1;
+  static currentSpeed = 0.5;
   static frameId = null;
   static resizeObserver = null;
-
-    numStars: 250,
-    baseSpeed: 0.5,
-    trailLength: 0.6,
-    starColor: 'rgb(180, 180, 255)',
-    canvasColor: 'rgba(0, 0, 0, 0.1)',
-    maxSpawnRadius: 2000,
-    minSpawnRadius: 0
       this.originElement.addEventListener('mouseenter', () => this.setAccelerate(true));
       this.originElement.addEventListener('mouseleave', () => this.setAccelerate(false));
     }
