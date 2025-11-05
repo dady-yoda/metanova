@@ -475,7 +475,7 @@ function App() {
               Stay updated, connect with participants & get instant support!
             </p>
             <a 
-              href="https://chat.whatsapp.com/EmzJRs0DYAJ6Ypm9X7TopU" 
+              href="https://chat.whatsapp.com/H0VgQP0KzrzCz6SfIvFLYt?mode=wwt" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="cta-button px-8 py-3 rounded-xl font-semibold inline-flex items-center gap-2 hover:scale-105 transition-transform"
